@@ -30,10 +30,8 @@ define([
 
 				if($('#newItemName').val() !== '') {
 					$.post(event.target.action,	$(event.target).serialize(), function(json){
-						$('#items').html(($('#items').html()) + '<li class="item"> <form method="POST" action="/doDeleteItem"><span class="name">' +  $('#newItemName').val() + '</span><span class="del">&#10005; </span></form></li>');
 						$('#newItemName').val('');
-						$('#addNew input[type=submit]').focus();
-						//parentView.showPage(json)
+						parentView.showPage(json)
 					});				
 				}
 				

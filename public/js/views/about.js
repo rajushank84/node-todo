@@ -8,16 +8,7 @@ define([
 	
 		var View = Backbone.View.extend({
 		
-			el: '#about',
-		
-			events: {
-			},
-			
-			initialize: function(json) {
-			},
-			
-			render: function(json) {
-			}
+			el: '#about'
 		
 		});
 		

@@ -6,7 +6,6 @@ require.config({
 	}
 });
 
-
 require(['views/app','backbone'], function(AppView, Backbone){
 	var appView =  new AppView();
 
@@ -36,7 +35,6 @@ require(['views/app','backbone'], function(AppView, Backbone){
 	Backbone.history.start();
 
 }); 
-
 
 require([
 	'../jsdust/landing',

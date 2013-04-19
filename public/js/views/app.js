@@ -35,7 +35,7 @@ define([
                 dust.render('public/templates/' + json.viewName + '.dust', json, function (err, out) {
                     $("#content").html(out);
                 });
-                var pageView = new View({parents: that});
+                var pageView = new View({parent: that});
             });
 
             Backbone.history.navigate('#' + json.viewName);

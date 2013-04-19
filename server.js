@@ -3,9 +3,8 @@ var express = require('express'),
 	_ = require('underscore')._,
 	engines = require('consolidate'),
 	path = require('path'),
-	fs = require('fs');
-
-var app = express();
+	fs = require('fs'),
+	app = express();
 
 app.engine('dust', engines.dust);
 
