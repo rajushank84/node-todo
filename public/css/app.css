@@ -1,0 +1,44 @@
+#items {
+    margin: 0;
+}
+
+#items li {
+    position:relative;
+    height:30px;
+    list-style: none;
+    border-bottom: 1px dashed gray;
+}
+
+#items .del {
+    position:absolute;
+    right:10px;
+
+    height:28px;
+    width:28px;
+    border-radius:20px;
+
+    background:#aaa;
+    font:22px Helvetica;
+    text-align:center;
+    color:#fff;
+    cursor:pointer;
+
+    display:none;
+}
+
+#items li:hover .del {
+    display: inline-block;
+}
+
+#new form {
+    background:#aaa;
+    padding:5px 0;
+    height:20px;
+}
+
+#new input[type="text"] {
+    width: 80%;
+    padding:0 5px;
+    margin: 0 5px;
+    float:left;
+}
