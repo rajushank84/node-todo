@@ -1,7 +1,9 @@
 var dataUtils = require('../lib/dataUtils');
 
 module.exports = function(app) {
-              
+    
+    'use strict';
+
 	app.get('/', function(req, res) {
 		renderOutput(req, res, 'landing', '');
 	});
@@ -10,7 +12,7 @@ module.exports = function(app) {
 		var data = {};
 		data.name = req.body.name;
 
-		dataUtils.saveItem(data, function(){		
+		dataUtils.saveItem(data, function(){
 			renderOutput(req, res, 'landing', 'Added');
 		});
 	});
@@ -19,9 +21,9 @@ module.exports = function(app) {
 		var data = {};
 		data.name = req.body.name;
 
-		dataUtils.deleteItem(data, function(){		
+		dataUtils.deleteItem(data, function(){
 			renderOutput(req, res, 'landing', 'Deleted');
-		});	
+		});
 	});
 
 	app.get('/about', function(req, res) {
@@ -39,20 +41,20 @@ module.exports = function(app) {
 				data: {
 					items: allTheItems
 				}
-			};			
+			};
 	
-			if(req.header('X-Requested-With') == 'XMLHttpRequest') {
+			if(req.header('X-Requested-With') === 'XMLHttpRequest') {
 				res.writeHead(200, { 'Content-Type': 'application/json' });
 				res.write(JSON.stringify(json));
 				res.end();
 			}
 
 			else {
-				res.render("public/templates/" + json.baseTemplate,json);
-			}		
+				res.render('public/templates/' + json.baseTemplate,json);
+			}
 		});
 
-	}	
-}
+	}
+};
 
 
