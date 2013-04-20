@@ -1,11 +1,14 @@
 define([
         'jquery',
         'underscore',
-        'backbone'
-], function ($, _, Backbone) {
-    var AppView = Backbone.View.extend({
+        'backbone',
+        'lib/SpineView'
+], function ($, _, Backbone, SpineView) {
+    var AppView = SpineView.extend({
 
-        el: $('body'),
+        el: '#content',
+
+        $el: $(this.el),
 
         events: {
             'submit form.proceed': 'proceedForm',
