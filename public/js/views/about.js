@@ -1,15 +1,17 @@
 define([
-	'jquery', 
-	'underscore', 
+	'jquery',
+	'underscore',
 	'backbone',
-	'../../jsdust/about'
-	], 
-	function($, _, Backbone, template){
-	
-		var View = Backbone.View.extend({
+	'lib/SpineView'
+	],
+	function($, _, Backbone, SpineView){
+		
+		'use strict';
+
+		var View = SpineView.extend({
 		
 			el: '#about'
-		
+
 		});
 		
 		return View;

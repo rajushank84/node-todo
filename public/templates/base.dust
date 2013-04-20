@@ -24,7 +24,8 @@
 	      <div class="row-fluid">
 	         
 	        <div id="content" class="span9">
-		    	
+	        	<section id="landing" style="display: none;"> </section>
+	        	<section id="about" style="display: none;"> </section>
 	        </div>
 	      </div>
 	    </div>

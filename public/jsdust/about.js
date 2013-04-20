@@ -1,1 +1,1 @@
-(function(){dust.register("public/templates/about.dust",body_0);function body_0(chk,ctx){return chk.write("<section id=\"about\">  <h1>About</h1>... About page goes here ...</section>");}return body_0;})();
+(function(){dust.register("public/templates/about.dust",body_0);function body_0(chk,ctx){return chk.write("\t<h1>About</h1>About page goes here");}return body_0;})();

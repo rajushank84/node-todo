@@ -8,42 +8,28 @@ define([
 
     var SpineView = Backbone.View.extend({
 
-        doRender: function (json) {
-            var that = this,
-                options = this.options,
-                $placeToRender,
-                template;
+        renderTemplate: function (json, callback) {
+            var that = this;
 
-            if (typeof this.$el === 'undefined') {
-                this.$el = $(this.el);
-            }
-
-            if((typeof json === 'undefined') || (typeof that.$el === 'undefined')) {
-                json = {};
-            } else {
-                template = that.$el.is('body') ? json.baseTemplate : json.viewName;
-            }
-
-            if(options.parent && options.placeToRender) {
-                $placeToRender = options.placeToRender;
-            }
-
-            dust.render('public/templates/' + template + '.dust', json, function (err, out) {
-                if(that.$el) {
-                    that.$el.html(out);
+            dust.render('public/templates/' + json.viewName + '.dust', json, function (err, out) {
+                if(that.el) {
+                    $(that.el).html(out);
                 }
-
-                if($placeToRender) {
-                    $placeToRender.html(out);
-                    that.$el = $($placeToRender.find('#' + json.viewName));
-                }
-
             });
 
-            if(this.onRender) {
-                this.onRender();
+            if(callback) {
+                callback();
             }
+        },
+
+        showTemplate: function() {
+            $(this.el).show();
+        },
+
+        hideTemplate: function() {
+            $(this.el).hide();
         }
+
 
     });
 

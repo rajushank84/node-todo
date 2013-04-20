@@ -1,48 +1,45 @@
 define([
-	'jquery', 
-	'underscore', 
+	'jquery',
+	'underscore',
 	'backbone',
-	'../../jsdust/landing',
 	'lib/SpineView'
-	], 
-	function($, _, Backbone, template, SpineView){
-	
+	],
+	function($, _, Backbone, SpineView){
+		
+		'use strict';
+
 		var View = SpineView.extend({
 		
 			el: '#landing',
 
-			$el: $(this.el),
-		
 			events: {
 				'click .del': 'deleteItem',
 				'submit #addNew': 'addNew',
 			},
 
 			deleteItem: function(event) {
-				/*var thisParent = $(event.target).parents('form')[0];
+				var thisParent = $(event.target).parents('form')[0],
+					that = this;
 
 				$.post(thisParent.action, $(thisParent).serialize(), function(json){
-					thisParent.parentNode.parentNode.removeChild(thisParent.parentNode);
+					that.renderTemplate(json);
 				});
 
-				event.preventDefault();*/
-				alert('deleting');
+				event.preventDefault();
 			},
 
 			addNew: function(event) {
-				/*var parentView = this.options.parent;
+				var that = this;
 
 				if($('#newItemName').val() !== '') {
 					$.post(event.target.action,	$(event.target).serialize(), function(json){
 						$('#newItemName').val('');
-						parentView.showPage(json)
+						that.renderTemplate(json);
 					});
-				}*/
-				alert('adding');
+				}
 
 				event.preventDefault();
 			}
-
 		});
 		
 		return View;

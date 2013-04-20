@@ -1,3 +1,4 @@
 rm -rf ./jsdust/
-dustc public/templates/landing.dust public/jsdust/landing.js
-dustc public/templates/about.dust public/jsdust/about.js
+node_modules/dustjs-linkedin/bin/dustc public/templates/landing.dust public/jsdust/landing.js
+node_modules/dustjs-linkedin/bin/dustc public/templates/about.dust public/jsdust/about.js
+node_modules/dustjs-linkedin/bin/dustc public/templates/base.dust public/jsdust/base.js

@@ -2,13 +2,18 @@ define([
         'jquery',
         'underscore',
         'backbone',
-        'lib/SpineView'
-], function ($, _, Backbone, SpineView) {
+        'lib/SpineView',
+        'views/landing',
+        'views/about'
+], function ($, _, Backbone, SpineView, LandingView, AboutView) {
+
+    'use strict';
+
     var AppView = SpineView.extend({
 
-        el: '#content',
+        el: 'body',
 
-        $el: $(this.el),
+        childViews: {},
 
         events: {
             'submit form.proceed': 'proceedForm',
@@ -16,9 +21,14 @@ define([
             'click a.proceed': 'proceedLink',
         },
 
-        proceedForm: function (e) {
-            $("#content").html("<h2>Loading...</h2>");
+        initialize: function() {
+            this.childViews = {
+                'landing': new LandingView({parent: this}),
+                'about': new AboutView({parent: this})
+            };
+        },
 
+        proceedForm: function (e) {
             $.post(e.target.action, $(e.target).serialize(), function (json) {
                 this.showPage(json);
             });
@@ -31,29 +41,18 @@ define([
             e.preventDefault();
         },
 
-        showPage: function (json) {
-            var that = this;
-            
-            require(['views/' + json.viewName], function (View) {
-                dust.render('public/templates/' + json.viewName + '.dust', json, function (err, out) {
-                    $("#content").html(out);
-                });
-                var pageView = new View({parent: that});
-            });
-
-            Backbone.history.navigate('#' + json.viewName);
-        },
-
         getPage: function (url) {
-            var that = this; // Oh I know. Just lazy to do proxy for now.
+            var that = this;
 
-            $("#content").html("<h2>Loading...</h2>");
+            that.childViews.landing.hideTemplate();
+            that.childViews.about.hideTemplate();
 
             $.get(url, function (json) {
-                that.showPage(json);
+                that.childViews[json.viewName].renderTemplate(json, function() {
+                    that.childViews[json.viewName].showTemplate();
+                });
             });
         }
-
     });
 
     return AppView;
