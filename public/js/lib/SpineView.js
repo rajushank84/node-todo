@@ -1,8 +1,9 @@
 define([
         'jquery',
         'underscore',
-        'backbone'
-], function ($, _, Backbone) {
+        'backbone',
+        'lib/templateHelper'
+], function ($, _, Backbone, TemplateHelper) {
 
     'use strict';
 
@@ -11,7 +12,7 @@ define([
         renderTemplate: function (json, callback) {
             var that = this;
 
-            renderTemplate(json.viewName, json, function(out) {
+            TemplateHelper.renderTemplate(json.viewName, json, function(out) {
                 if(that.el) {
                     $(that.el).html(out);
                 }
