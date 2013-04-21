@@ -1,3 +1,6 @@
+    <%
+        var additionalClass;        
+    %>
 
     <div id="new">
         <form id="addNew" action="/doAddItem" method="POST">
@@ -8,7 +11,16 @@
 
     <ul id="items">
         <% for(var i=0; i<data.items.length; i++) {%>
-            <li class="item">
+            <%
+                if(i===0) {
+                    additionalClass = "first";
+                } else if(i===data.items.length -1) {
+                    additionalClass = "last";
+                } else {
+                    additionalClass = "";
+                }
+            %>
+            <li class="item <%= additionalClass %>">
                 <form method="POST" action="/doDeleteItem">
                     <span class="name"><%= data.items[i].name %></span>
                     <input type="hidden" name="name" value="<%= data.items[i].name %>" />

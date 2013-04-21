@@ -5,7 +5,7 @@ var express = require('express'),
 	path = require('path'),
 	fs = require('fs'),
 	app = express(),
-	templatingEngine = 'dust';
+	templatingEngine = 'ejs';
 
 app.engine(templatingEngine, engines[templatingEngine]);
 
