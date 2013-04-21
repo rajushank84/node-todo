@@ -11,7 +11,7 @@ define([
         renderTemplate: function (json, callback) {
             var that = this;
 
-            dust.render('public/templates/' + json.viewName + '.dust', json, function (err, out) {
+            renderTemplate(json.viewName, json, function(out) {
                 if(that.el) {
                     $(that.el).html(out);
                 }

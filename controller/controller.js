@@ -50,7 +50,7 @@ module.exports = function(app) {
 			}
 
 			else {
-				res.render('public/templates/' + json.baseTemplate,json);
+				res.render(json.baseTemplate,json);
 			}
 		});
 

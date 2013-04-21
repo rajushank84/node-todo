@@ -4,14 +4,16 @@ var express = require('express'),
 	engines = require('consolidate'),
 	path = require('path'),
 	fs = require('fs'),
-	app = express();
+	app = express(),
+	templatingEngine = 'dust';
 
-app.engine('dust', engines.dust);
+app.engine(templatingEngine, engines[templatingEngine]);
 
 app.configure(function(){
 	app.set('port', process.env.PORT || 8000);
-	app.set('views', __dirname + '/');
-	app.set('view engine', 'dust');
+
+	app.set('views', __dirname + '/public/templates/' + templatingEngine);
+	app.set('view engine', templatingEngine);
 	app.use(express.favicon());
 	app.use(express.logger('short'));
 	app.use(express.bodyParser({uploadDir:'./uploads'}));
