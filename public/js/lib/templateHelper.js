@@ -5,13 +5,7 @@ define(function () {
 	function prefetchTemplates() {
 		'use strict';
 
-		var filesToPrefetch = [];
-
-		if(typeof dust!=='undefined') {
-			filesToPrefetch = ['../jsdust/landing', 'views/landing', '../jsdust/about', 'views/about'];
-		} else if(typeof EJS!=='undefined') {
-			filesToPrefetch = ['views/landing', 'views/about'];
-		}
+		var filesToPrefetch = ['views/landing', 'views/about'];
 
 		require(filesToPrefetch, function(){
 				// do nothing. Just prefetching.
@@ -25,16 +19,7 @@ define(function () {
 	    var out;
 
 	    if(typeof EJS!=='undefined') {
-	        out = new EJS({url: 'templates/ejs/' + templateName + '.ejs'}).render(json);
-	        if(callback) {
-	            callback(out);
-	        }
-	    } else if(typeof dust!=='undefined') {
-
-	        dust.render('public/templates/dust/' + templateName + '.dust', json, function(err, output) { 
-	            out = output;
-	        });
-
+	        out = new EJS({url: 'templates/' + templateName + '.ejs'}).render(json);
 	        if(callback) {
 	            callback(out);
 	        }

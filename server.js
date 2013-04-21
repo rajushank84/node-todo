@@ -12,7 +12,7 @@ app.engine(templatingEngine, engines[templatingEngine]);
 app.configure(function(){
 	app.set('port', process.env.PORT || 8000);
 
-	app.set('views', __dirname + '/public/templates/' + templatingEngine);
+	app.set('views', __dirname + '/public/templates');
 	app.set('view engine', templatingEngine);
 	app.use(express.favicon());
 	app.use(express.logger('short'));

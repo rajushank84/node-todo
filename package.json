@@ -11,7 +11,6 @@
     "consolidate": "0.4.0",
     "underscore": "1.4.2",
     "backbone": "0.9.2",
-    "dustjs-linkedin": "1.0.0",
     "express": "3.0.0rc5",
     "fileupload": "0.2.2",
     "fs": "0.0.0",
