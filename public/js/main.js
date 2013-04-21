@@ -2,12 +2,13 @@ require.config({
 	paths: {
 		jquery: 'lib/jquery-min',
 		underscore: 'lib/underscore-min',
-		backbone: 'lib/backbone-optamd3-min',
-		templateHelper: 'lib/templateHelper'
+		backbone: 'lib/backbone-optamd3-min'
 	}
 });
 
-require(['views/app','backbone'], function(AppView, Backbone, TemplateHelper){
+require(['views/app','backbone'], function(AppView, Backbone){
+	'use strict';
+
 	var appView =  new AppView();
 
 	appView.render();
@@ -34,7 +35,5 @@ require(['views/app','backbone'], function(AppView, Backbone, TemplateHelper){
 
 	var appRouter = new AppRouter();
 	Backbone.history.start();
-
 }); 
 
-TemplateHelper.prefetchTemplates();

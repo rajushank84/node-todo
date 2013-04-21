@@ -2,7 +2,7 @@ define([
         'jquery',
         'underscore',
         'backbone',
-        'lib/templateHelper'
+        'core/templateHelper'
 ], function ($, _, Backbone, TemplateHelper) {
 
     'use strict';

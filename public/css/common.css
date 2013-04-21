@@ -1,0 +1,31 @@
+body {
+    font-family: arial;
+    font-size: 14px;
+}
+
+body,
+h1 {
+
+    margin: 0;
+    padding: 0;
+}
+
+
+#content {
+    clear: both;
+
+    padding: 0;
+    margin-right: auto; 
+    margin-left: auto; 
+
+    background-image: linear-gradient(bottom, rgb(255,255,255) 0%, rgb(247,247,247) 50%, rgb(214,214,214) 75%);
+    background-image: -o-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(247,247,247) 50%, rgb(214,214,214) 75%);
+    background-image: -moz-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(247,247,247) 50%, rgb(214,214,214) 75%);
+    background-image: -webkit-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(247,247,247) 50%, rgb(214,214,214) 75%);
+    background-image: -ms-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(247,247,247) 50%, rgb(214,214,214) 75%);
+    background-image: -webkit-gradient(linear,left bottom, left top, color-stop(0, rgb(255,255,255)), color-stop(0.5, rgb(247,247,247)), color-stop(0.75, rgb(214,214,214)));        
+}
+
+.subsection {
+    display: none;
+}

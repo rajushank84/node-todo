@@ -1,20 +1,8 @@
 define(function () {
 
-	"use strict";
-
-	function prefetchTemplates() {
-		'use strict';
-
-		var filesToPrefetch = ['views/landing', 'views/about'];
-
-		require(filesToPrefetch, function(){
-				// do nothing. Just prefetching.
-			}
-		);
-	}
+	'use strict';
 
 	function renderTemplate(templateName, json, callback) {
-		'use strict';
 
 	    var out;
 
@@ -27,7 +15,6 @@ define(function () {
 	}
 
 	return {
-		prefetchTemplates: prefetchTemplates,
 		renderTemplate: renderTemplate
 	};
 

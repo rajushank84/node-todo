@@ -2,7 +2,7 @@ define([
         'jquery',
         'underscore',
         'backbone',
-        'lib/SpineView',
+        'core/spineView',
         'views/landing',
         'views/about'
 ], function ($, _, Backbone, SpineView, LandingView, AboutView) {
