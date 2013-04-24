@@ -1,5 +1,5 @@
     <%
-        var additionalClass;        
+        var additionalClass = "";    
     %>
 
     <div id="new">
@@ -16,8 +16,6 @@
                     additionalClass = "first";
                 } else if(i===data.items.length -1) {
                     additionalClass = "last";
-                } else {
-                    additionalClass = "";
                 }
             %>
             <li class="item <%= additionalClass %>">
@@ -29,3 +27,4 @@
             </li>
         <% } %>
     </ul>
+

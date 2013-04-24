@@ -18,26 +18,35 @@ define([
 			},
 
 			deleteItem: function(event) {
-				var thisParent = $(event.target).parents('form')[0],
-					that = this;
+				var thisForm = $(event.target).parents('form')[0];
 
-				$.post(thisParent.action, $(thisParent).serialize(), function(json){
-					that.renderTemplate(json);
-				});
-
-				event.preventDefault();
+				this.doAction(thisForm.action, $(thisForm), event)
 			},
 
 			addNew: function(event) {
-				var that = this;
 
 				if($('#newItemName').val() !== '') {
-					$.post(event.target.action,	$(event.target).serialize(), function(json){
+					this.doAction(event.target.action, $(event.target), event, function() {
 						$('#newItemName').val('');
-						that.renderTemplate(json);
+						$('#newItemName').focus();
 					});
 				}
+			},
+			
+			doAction: function(action, $form, event, callback) {
+				var that = this;
 
+				$('body').addClass('loading');
+
+				$.post(action, $form.serialize(), function(json){
+					that.renderTemplate(json);
+					$('body').removeClass('loading');
+
+					if(callback) {
+						callback();
+					}
+				});
+				
 				event.preventDefault();
 			}
 		});
