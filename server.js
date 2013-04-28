@@ -11,7 +11,6 @@ app.engine(templatingEngine, engines[templatingEngine]);
 
 app.configure(function(){
 	app.set('port', process.env.PORT || 8000);
-
 	app.set('views', __dirname + '/public/templates');
 	app.set('view engine', templatingEngine);
 	app.use(express.favicon());
@@ -22,6 +21,7 @@ app.configure(function(){
 	app.use(express.session());
 	app.use(app.router);
 	app.use(express.static(path.join(__dirname, '/public')));
+	//app.use(express.staticProvider(__dirname + '/public'));
 });
 
 app.configure('development', function(){

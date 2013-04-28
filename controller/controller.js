@@ -5,6 +5,10 @@ module.exports = function(app) {
     'use strict';
 
 	app.get('/', function(req, res) {
+		renderHtml(req, res, 'landing', '');
+	});
+
+	app.get('/landing', function(req, res) {
 		renderOutput(req, res, 'landing', '');
 	});
 
@@ -43,18 +47,31 @@ module.exports = function(app) {
 				}
 			};
 	
-			if(req.header('X-Requested-With') === 'XMLHttpRequest') {
-				res.writeHead(200, { 'Content-Type': 'application/json' });
-				res.write(JSON.stringify(json));
-				res.end();
-			}
-
-			else {
-				res.render(json.baseTemplate,json);
-			}
+			res.writeHead(200, { 'Content-Type': 'application/json' });
+			res.write(JSON.stringify(json));
+			res.end();
+			
 		});
 
 	}
+
+	function renderHtml(req, res, viewName, status) {
+		var json;
+
+		dataUtils.getAllItems(function(allTheItems){
+			json = {
+				viewName: viewName,
+				status: status,
+				baseTemplate: 'base',
+				data: {
+					items: allTheItems
+				}
+			};
+	
+			res.render(json.baseTemplate,json);
+		});
+
+	}	
 };
 
 

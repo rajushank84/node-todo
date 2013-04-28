@@ -47,9 +47,11 @@ define([
             that.childViews.landing.hideTemplate();
             that.childViews.about.hideTemplate();
 
+            $('body').addClass('loading');
             $.get(url, function (json) {
                 that.childViews[json.viewName].renderTemplate(json, function() {
                     that.childViews[json.viewName].showTemplate();
+                    $('body').removeClass('loading');
                 });
             });
         }

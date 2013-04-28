@@ -25,7 +25,7 @@ require(['views/app','backbone'], function(AppView, Backbone){
 		},
 
 		landing: function() {
-			appView.getPage('/');
+			appView.getPage('/landing');
 		},
 
 		default: function() {
